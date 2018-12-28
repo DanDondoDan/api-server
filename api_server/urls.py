@@ -33,4 +33,5 @@ urlpatterns = [
     url(r'rest-auth/', include('rest_auth.urls')),
     url(r'^detail-person/', views.PersonViewSet.as_view({'get': 'list'})),
     url(r'^rest-auth/login/', views.LoginView.as_view(), name='rest_login'),
+    path('accounts/', include('allauth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

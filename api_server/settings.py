@@ -29,6 +29,7 @@ TOKEN_LIFETIME = ENV.TOKEN_DURATION_HOURS
 TOKEN_LIFETIME = 24
 
 LOGIN_REDIRECT_URL = '/'  # home page
+LOGOUT_REDIRECT_URL = '/'
 
 ALLOWED_HOSTS = []
 
@@ -51,8 +52,12 @@ INSTALLED_APPS = [
 
     'rest_framework.authtoken',
     'rest_auth',
+
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+
     'django.contrib.sites',
     'timed_auth_token',
 ]
