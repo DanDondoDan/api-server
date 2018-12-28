@@ -26,9 +26,9 @@ from django.views.generic.base import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
     url('^api/', include(router.urls)),
-    url(r'^unit-detail/(?P<pk>\d+)/employeers/$',
-        views.UnitDetail.as_view()),
-    url(r'^sub/(?P<pk>[0-9]+)/employeers/$', views.UnitEmployeerView.as_view()),
+    url(r'^department-detail/(?P<pk>\d+)/employeers/$',
+        views.DepartmentDetail.as_view()),
+    url(r'^department/(?P<pk>[0-9]+)/employeers/$', views.DepartmentEmployeerView.as_view()),
     url(r'^sign-up/', views.CustomUser.as_view()),
     url(r'rest-auth/', include('rest_auth.urls')),
     url(r'^detail-person/', views.PersonViewSet.as_view({'get': 'list'})),

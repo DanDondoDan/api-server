@@ -26,7 +26,7 @@ class SearchPersonViewSet(views.ModelViewSet):
                       'employment_date',
                       'salary',
                       'chief',
-                      'unit',
+                      'department',
                       )
     
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)

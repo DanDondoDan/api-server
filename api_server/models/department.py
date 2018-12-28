@@ -5,14 +5,14 @@ from django.shortcuts import get_object_or_404
 from api_server.models.position import Position
 from rest_framework.response import Response
 
-class Unit(MPTTModel):
+class Department(MPTTModel):
     
     id = models.CharField(
         max_length=32,
         primary_key=True,
         unique=True,
         verbose_name='ID',
-        help_text='Forsquare ID of the unit.',
+        help_text='Forsquare ID of the department.',
     )
     name = models.CharField(max_length=255, verbose_name= 'Name')
 
@@ -22,8 +22,8 @@ class Unit(MPTTModel):
         null=True,
         related_name='children',
         db_index=True,
-        verbose_name='Parent unit',
-        help_text='Parent unit.',
+        verbose_name='Parent department',
+        help_text='Parent department.',
         on_delete=models.CASCADE,
     )
     
@@ -34,15 +34,15 @@ class Unit(MPTTModel):
 
     class Meta:
         unique_together = (('parent',))
-        verbose_name = 'Unit'
-        verbose_name_plural = 'Unit'
+        verbose_name = 'Department'
+        verbose_name_plural = 'Departments'
 
     class MPTTMeta:
         order_insertion_by = ['name']
     
     def get_person_count(self):
         ids = self.get_descendants(include_self=True)
-        return Person.objects.filter(unit__in=ids).count()
+        return Person.objects.filter(department__in=ids).count()
     
     
     def __str__(self):

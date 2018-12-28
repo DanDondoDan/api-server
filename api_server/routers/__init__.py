@@ -10,7 +10,7 @@ from api_server import views
 
 _VIEWS = (
     # views.PersonViewSet,
-    views.UnitViewSet,
+    views.DepartmentViewSet,
     views.SearchPersonViewSet,
 )
 

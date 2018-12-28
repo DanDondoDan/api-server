@@ -1,3 +1,3 @@
 from .person import *
-from .unit import *
+from .department import *
 from .user import *

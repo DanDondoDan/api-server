@@ -21,7 +21,7 @@ class PersonAdmin(admin.ModelAdmin):
                     'employment_date',
                     'salary',
                     'chief',
-                    'unit',
+                    'department',
                     'photo',
                     )
                     

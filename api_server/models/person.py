@@ -19,7 +19,7 @@ class Person(BaseModel):
     employment_date = models.DateField(default=None)
     salary = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
     chief = models.ForeignKey('self', blank='True', null='True', on_delete=models.CASCADE)
-    unit = TreeForeignKey('Unit', null=True, blank=True, on_delete=models.CASCADE)
+    department = TreeForeignKey('Department', null=True, blank=True, on_delete=models.CASCADE)
 
     photo = models.ImageField(blank=True, null=True, default=None, upload_to='media')
    
@@ -32,7 +32,7 @@ class Person(BaseModel):
             self.employment_date,
             self.salary,
             self.chief,
-            self.unit,
+            self.department,
             self.photo, 
             self.user.email
             )

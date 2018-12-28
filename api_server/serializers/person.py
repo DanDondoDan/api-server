@@ -25,7 +25,7 @@ class PersonPrivateSerializer(PersonPublicSerializer):
             'employment_date',
             'salary',
             'chief',
-            'unit',
+            'department',
             )
 
     def get_email(self, obj: models.Person):

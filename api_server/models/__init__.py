@@ -1,4 +1,5 @@
 from .user import *
 from .person import *
-from .unit import *
+from .department import *
 from .position import *
+from .product import *
