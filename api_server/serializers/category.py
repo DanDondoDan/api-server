@@ -3,26 +3,26 @@ from api_server import models
 from rest_framework_recursive.fields import RecursiveField
 
 
-class DepartmentTreeSerializer(serializers.ModelSerializer):
+class CategoryTreeSerializer(serializers.ModelSerializer):
     
     children = RecursiveField(many=True)
-    department_count = serializers.ReadOnlyField(source='get_person_count')
+    category_count = serializers.ReadOnlyField(source='get_product_count')
    
 
     class Meta:
-        model = models.Department
+        model = models.Category
         fields = ('id', 
                   'name',
                   'plural_name',
                   'children',                  
-                  'department_count',
+                  'category_count',
                   )
     
            
-class DepartmentDetail(serializers.ModelSerializer):
+class CategoryDetail(serializers.ModelSerializer):
 
     class Meta:
-        model = models.Department
+        model = models.Category
         fields = ('id', 
                   'name',
                   'plural_name',
