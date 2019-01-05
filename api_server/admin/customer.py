@@ -18,3 +18,13 @@ class CustomerAdmin(admin.ModelAdmin):
                     'first_name',
                     'photo',
                     )
+
+class ProfileCustomerAdminForm(BaseForm):
+    class Meta:
+        model = models.ProfileCustomer
+        exclude = BaseForm.Meta.exclude
+
+
+@admin.register(models.ProfileCustomer)
+class ProfileCustomerAdmin(admin.ModelAdmin):
+    form = ProfileCustomerAdminForm

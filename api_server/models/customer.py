@@ -2,6 +2,7 @@ from django.db import models
 from api_server.models.base import BaseModel, RecordStatusMixin
 from mptt.models import MPTTModel, TreeForeignKey
 from api_server.models.position import Position
+from api_server.models.profile import Profile
 
 
 class Customer(BaseModel, RecordStatusMixin):
@@ -32,3 +33,9 @@ class Customer(BaseModel, RecordStatusMixin):
     class Meta:
         verbose_name = 'Customer'
         verbose_name_plural = 'Customer'
+
+class ProfileCustomer(Profile):
+    
+    CURRENCY_DEFAULT = 'USD'
+
+    currency = models.CharField(max_length=7, default=CURRENCY_DEFAULT, null=True, blank=True)
