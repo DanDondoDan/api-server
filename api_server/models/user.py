@@ -28,9 +28,16 @@ class User(AbstractUser, BaseModel):
 
     username = None
 
+    MODE_EMPLOYEE = 'employee'
+    MODE_CUSTOMER = 'customer'
+    MODE_USERS = ((MODE_EMPLOYEE, MODE_EMPLOYEE), (MODE_CUSTOMER, MODE_CUSTOMER))
+
+
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=20, blank=True, null=True)
     birth = models.DateField(null=True, blank=True)
+
+    mode = models.CharField(choices=MODE_USERS, max_length=max(map(lambda x: len(x), MODE_USERS[0])), default=MODE_CUSTOMER)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
