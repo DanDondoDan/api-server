@@ -27,9 +27,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url('^api/', include(router.urls)),
     url(r'^department/(?P<pk>[0-9]+)/employeers/$', views.DepartmentEmployeerView.as_view()),
+    path('person/<int:pk>/', views.PersonDetailView.as_view(), name="employee-detail"),
+    path('product/<int:pk>/', views.ProductDetailView.as_view(), name="product-detail"),
+    
     url(r'^sign-up/', views.CustomUser.as_view()),
     url(r'rest-auth/', include('rest_auth.urls')),
-    path('person/<int:pk>/', views.PersonDetailView.as_view(), name="employee-detail"),
+    
     url(r'^rest-auth/login/', views.LoginView.as_view(), name='rest_login'),
     path('accounts/', include('allauth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

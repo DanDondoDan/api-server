@@ -14,7 +14,7 @@ class Product(BaseModel):
     photo = models.ImageField(blank=True, null=True, default=None, upload_to='media/products/')
    
     def __str__(self):
-        return "{} {} {} {}".format(
+        return "{} {} {} {} {}".format(
             self.name,
             self.amount,
             self.price, 

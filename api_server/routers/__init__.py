@@ -9,15 +9,14 @@ from api_server import views
 
 
 _VIEWS = (
-    # views.PersonViewSet,
     views.DepartmentViewSet,
     views.SearchPersonViewSet,
+    views.SearchProductViewSet,
 )
 
 
 
 router = DefaultRouter()
-# routerMy = MyRouter()
 
 
 for rt in _VIEWS:
