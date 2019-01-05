@@ -9,7 +9,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import mixins
 from rest_framework.response import Response
 from rest_framework import generics
-from api_server.decorators.decorators import validate_request_data
+from api_server.decorators.decorators_prod import validate_request_data
 
  
 class SearchProductViewSet(views.ModelViewSet):
