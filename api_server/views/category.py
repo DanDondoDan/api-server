@@ -37,10 +37,6 @@ class CategoryDetail(generics.RetrieveAPIView):
   
 
 
-##############################################################
-# Department = get_model('api_server', 'Department')
-# Person = get_model('api_server', 'Person')
-
 class CategoryProductView(generics.ListAPIView):
     serializer_class = serializers.ProductSerializer
 

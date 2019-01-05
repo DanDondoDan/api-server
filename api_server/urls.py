@@ -26,12 +26,10 @@ from django.views.generic.base import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
     url('^api/', include(router.urls)),
-    url(r'^department-detail/(?P<pk>\d+)/employeers/$',
-        views.DepartmentDetail.as_view()),
     url(r'^department/(?P<pk>[0-9]+)/employeers/$', views.DepartmentEmployeerView.as_view()),
     url(r'^sign-up/', views.CustomUser.as_view()),
     url(r'rest-auth/', include('rest_auth.urls')),
-    url(r'^detail-person/', views.PersonViewSet.as_view({'get': 'list'})),
+    path('person/<int:pk>/', views.PersonDetailView.as_view(), name="employee-detail"),
     url(r'^rest-auth/login/', views.LoginView.as_view(), name='rest_login'),
     path('accounts/', include('allauth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

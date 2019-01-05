@@ -31,16 +31,6 @@ class DepartmentViewSet(
         return Response(data=serializer.data)
         
 
-class DepartmentDetail(generics.RetrieveAPIView):
-    queryset = Department.objects.all()
-    serializer_class = serializers.DepartmentDetail
-  
-
-
-##############################################################
-# Department = get_model('api_server', 'Department')
-# Person = get_model('api_server', 'Person')
-
 class DepartmentEmployeerView(generics.ListAPIView):
     serializer_class = serializers.PersonPrivateSerializer
 
