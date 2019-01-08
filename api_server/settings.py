@@ -145,7 +145,15 @@ REST_FRAMEWORK = {
     ),
     
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated', ), # Globally for All project
+        # 'rest_framework.permissions.IsAuthenticated', ), # Globally for All project
+        'rest_framework.permissions.AllowAny', ),
+
+    # 'DEFAULT_PARSER_CLASSES': (
+    # 'rest_framework_xml.parsers.XMLParser',
+    # ),
+    # 'DEFAULT_RENDERER_CLASSES': (
+        # 'rest_framework_xml.renderers.XMLRenderer',
+    # ),
 
 }
 
@@ -188,3 +196,12 @@ SERVICE_VARS = {
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+CELERY_BROKER_URL = ENV.CELERY_BROKER_URL
+
+CELERY_RESULT_BACKEND = ENV.CELERY_BROKER_URL
+
+CELERY_IMPORTS = [
+                    'api_server.celery.tasks.test_task',
+                    'yacht_server.celery.tasks.exchange_rates',
+                  ]

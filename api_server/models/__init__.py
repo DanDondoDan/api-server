@@ -7,3 +7,4 @@ from .category import *
 from .customer import *
 from .profile import *
 from .history import *
+from .exchange import *
