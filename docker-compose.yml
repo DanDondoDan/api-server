@@ -1,0 +1,78 @@
+version: '2'
+services:
+    web:
+        image: registry.github.com/DanDondoDan/api-server
+        build:
+          context: .
+          args:
+            # - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+        environment:
+            # переменные окружения, значения которых пробрасываются
+            #  в контейнер из сервера
+            - SECRET_KEY
+            - DEBUG
+            # - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+        entrypoint:
+            uwsgi --ini uwsgi.ini
+        ports:
+            - "8000:8000"
+#        volumes:
+#            - static:/srv/static
+        restart: unless-stopped
+
+    test:
+        image: registry.github.com/DanDondoDan/api-server
+        environment:
+            # - DJANGO_SECRET_KEY${DJANGO_SECRET_KEY}
+        command: python manage.py test
+        restart: "no"
+
+    postgres:
+        image: postgres:9.6
+        environment:
+            # переменные окружения: пользователь и база данных
+            - POSTGRES_USER=root
+            - POSTGRES_DB=apidb
+#        volumes:
+#             хранилище данных
+#            - data:/var/lib/postgresql/data
+        restart: unless-stopped
+    migration:
+        image: registry.github.com/DanDondoDan/api-server
+        environment:
+            # - DJANGO_SECRET_KEY
+        command: python manage.py migrate
+        depends_on:
+            - postgres
+
+    nginx:
+        image: nginx:mainline
+        ports:
+            # открытые наружу порты
+            - "80:80"
+            - "443:443"
+#        volumes:
+#            # хранилища конфигов и статических файлов
+#            - ./nginx:/etc/nginx:ro
+#            - static:/srv/static:ro
+        depends_on:
+            - web
+        restart: unless-stopped
+    redis:
+        image: "redis:alpine"
+        ports:
+            - "6379:6379"
+        command: redis-server
+
+    celery:
+        image: registry.github.com/DanDondoDan/api-server
+        command:  celery -A api_server.celery worker -l info -B
+        environment:
+            - CELERY_BROKER_URL
+            - CELERY_RESULT_BACKEND
+        #        volumes:
+        depends_on:
+            - redis
+            - postgres
+#volumes:
+#    static:
