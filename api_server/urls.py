@@ -44,3 +44,4 @@ urlpatterns = [
 # https://www.slideshare.net/kranonit/kranonits20
 # https://toster.ru/q/232782
 # https://github.com/awesto/django-shop
+# https://habr.com/post/327694/  - поиск еластик сеарч
