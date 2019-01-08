@@ -7,6 +7,7 @@ from api_server.models.position import Position
 class Product(BaseModel):
 
     name = models.CharField(max_length=100)
+    description = models.TextField(max_length=1000, blank=True, null=True)
     amount = models.PositiveIntegerField()
     price = models.IntegerField(default=0)
     category = TreeForeignKey('Category', null=True, blank=True, on_delete=models.CASCADE)
@@ -14,8 +15,9 @@ class Product(BaseModel):
     photo = models.ImageField(blank=True, null=True, default=None, upload_to='media/products/')
    
     def __str__(self):
-        return "{} {} {} {} {}".format(
+        return "{} {} {} {} {} {}".format(
             self.name,
+            self.description,
             self.amount,
             self.price, 
             self.category,

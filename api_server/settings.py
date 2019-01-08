@@ -60,6 +60,7 @@ INSTALLED_APPS = [
 
     'django.contrib.sites',
     'timed_auth_token',
+
 ]
 
 MIDDLEWARE = [
@@ -177,6 +178,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 # default is 10 pixels
 MPTT_ADMIN_LEVEL_INDENT = 5
 
@@ -195,6 +199,7 @@ SERVICE_VARS = {
 }
 
 MEDIA_URL = '/media/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 CELERY_BROKER_URL = ENV.CELERY_BROKER_URL
@@ -205,3 +210,4 @@ CELERY_IMPORTS = [
                     'api_server.celery.tasks.test_task',
                     'yacht_server.celery.tasks.exchange_rates',
                   ]
+

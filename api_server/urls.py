@@ -34,8 +34,13 @@ urlpatterns = [
     
     url(r'^sign-up/', views.CustomUser.as_view()),
     url(r'rest-auth/', include('rest_auth.urls')),
+
     
     url(r'^rest-auth/login/', views.LoginView.as_view(), name='rest_login'),
     url('google/login/', views.GoogleLoginView.as_view(), name='google_login'),
     path('accounts/', include('allauth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# https://www.slideshare.net/kranonit/kranonits20
+# https://toster.ru/q/232782
+# https://github.com/awesto/django-shop

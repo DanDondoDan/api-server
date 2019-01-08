@@ -5,6 +5,7 @@ from rest_framework.views import status
 def validate_request_data(foo):
     def decorated(*args, **kwargs):
         name = args[0].request.data.get("name", ""),
+        description = args[0].request.data.get("description", ""),
         amount = args[0].request.data.get("amount", ""),
         category = args[0].request.data.get("category", ""),
         photo = args[0].request.data.get("photo", ""),

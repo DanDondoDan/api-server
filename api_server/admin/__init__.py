@@ -7,3 +7,5 @@ from .category import *
 from .customer import *
 from .history import *
 from .exchange import *
+from .order import *
+from .orderposition import *

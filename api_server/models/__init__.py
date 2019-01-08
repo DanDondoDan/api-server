@@ -8,3 +8,5 @@ from .customer import *
 from .profile import *
 from .history import *
 from .exchange import *
+from .order import *
+from .orderposition import *

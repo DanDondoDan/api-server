@@ -22,6 +22,7 @@ class SearchProductViewSet(views.ModelViewSet):
     serializer_class = serializers.ProductSerializer
 
     __basic_fields = ('name',
+                      'description',
                       'amount',
                       'price',
                       'category',
