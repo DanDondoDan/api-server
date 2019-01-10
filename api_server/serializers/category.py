@@ -17,6 +17,7 @@ class CategoryTreeSerializer(serializers.ModelSerializer):
                   'children',                  
                   'category_count',
                   )
+
     
            
 class CategoryDetail(serializers.ModelSerializer):

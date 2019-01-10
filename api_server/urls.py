@@ -28,7 +28,7 @@ urlpatterns = [
     url('^api/', include(router.urls)),
     url(r'^department/(?P<pk>[0-9]+)/employeers/$', views.DepartmentEmployeerView.as_view()),
     path('person/<int:pk>/', views.PersonDetailView.as_view(), name="employee-detail"),
-    path('product/<int:pk>/', views.ProductDetailView.as_view(), name="product-detail"),
+    path('product/<int:pk>/', views.ProductListView.as_view(), name="product-detail"),
 
     path('exchange/', views.ExchangeViewSet.as_view(), name="exchange"),
     

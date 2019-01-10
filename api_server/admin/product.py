@@ -14,4 +14,4 @@ class ProductAdminForm(BaseForm):
 @admin.register(models.Product)
 class ProductAdmin(admin.ModelAdmin):
     form = ProductAdminForm
-    list_display = ('name', 'description', 'amount', 'price', 'category', 'photo', )
+    list_display = ('name', 'description', 'price', 'category', 'active', 'photo', )

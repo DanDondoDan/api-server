@@ -23,20 +23,19 @@ class SearchProductViewSet(views.ModelViewSet):
 
     __basic_fields = ('name',
                       'description',
-                      'amount',
                       'price',
                       'category',
+                      'active',
+                      # 'photo',
                       )
     
     filter_backends = (DjangoFilterBackend, SearchFilter, OrderingFilter)
     filter_fields = __basic_fields
     search_fields = __basic_fields
 
-class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):
+class ProductListView(generics.ListAPIView):
     """
     GET product/:id/
-    PUT product/:id/
-    DELETE product/:id/
     """
     queryset = models.Product.objects.all()
     serializer_class = serializers.ProductSerializer
@@ -45,34 +44,6 @@ class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):
         try:
             pers = self.queryset.get(pk=kwargs["pk"])
             return Response(serializers.ProductSerializer(pers).data)
-        except models.Product.DoesNotExist:
-            return Response(
-                data={
-                    "message": "Product with id: {} does not exist".format(kwargs["pk"])
-                },
-                status=status.HTTP_404_NOT_FOUND
-            )
-
-    @validate_request_data
-    def put(self, request, *args, **kwargs):
-        try:
-            pers = self.queryset.get(pk=kwargs["pk"])
-            serializer = serializers.ProductSerializer
-            updated_person = serializer.update(pers, request.data)
-            return Response(serializers.ProductSerializer(updated_person).data)
-        except models.Product.DoesNotExist:
-            return Response(
-                data={
-                    "message": "Product with id: {} does not exist".format(kwargs["pk"])
-                },
-                status=status.HTTP_404_NOT_FOUND
-            )
-
-    def delete(self, request, *args, **kwargs):
-        try:
-            pers = self.queryset.get(pk=kwargs["pk"])
-            pers.delete()
-            return Response(status=status.HTTP_204_NO_CONTENT)
         except models.Product.DoesNotExist:
             return Response(
                 data={

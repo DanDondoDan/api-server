@@ -14,8 +14,12 @@ class CustomerAdminForm(BaseForm):
 @admin.register(models.Customer)
 class CustomerAdmin(admin.ModelAdmin):
     form = CustomerAdminForm
-    list_display = ('last_name',
+    list_display = (
+                    'number',
+                    'salutation',
+                    'last_name',
                     'first_name',
+                    'last_access',
                     'photo',
                     )
 

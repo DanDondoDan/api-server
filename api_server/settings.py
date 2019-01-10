@@ -60,6 +60,7 @@ INSTALLED_APPS = [
 
     'django.contrib.sites',
     'timed_auth_token',
+    'djmoney',
 
 ]
 

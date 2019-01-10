@@ -21,5 +21,5 @@ class PurchHistory(BaseModel):
         ordering = ['-status', 'product',]
 
     def __str__(self):
-        return "{}: {} ({})".format(self.product.name,
+        return "{}: ({})".format(self.product.name,
                                     self.status)
